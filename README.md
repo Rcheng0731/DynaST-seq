@@ -9,16 +9,20 @@ Understanding the spatio-temporal gene expression is crucial for elucidating the
     --sample sampleName \
     --id sampleName \
     --inputdir rawdata \
-    --gtf Homo_sapiens.GRCh38.99.gtf \
-    --transcriptome Homo_sapiens_GRCh38 \
+    --gtf xxx.gtf \
+    --transcriptome xxx \
     --image HE.tif \
     --alignment alignment.json \
     --outputdir result
 ```
-2. Consensus_sequence_construction.py：used to retain reads with identical UMIs, barcodes, and gene labels in the BAM file, and for each genomic position, select the most frequent base within each UMI group as the consensus base to construct the consensus sequence.
-3. Expression_matrix_extraction.py：extracts gene, barcode, and UMI information from the BAM file, calculates the UMI expression matrices and UMI rates for new and old genes.
-4. Conversion_Proportions.py：calculates mutation and conversion counts, and generates summary reports and visualizations of conversion proportions for sequencing data analysis.
-5. Metabolic_Labeling_Correction.py：binomial mixture model was used to correct the distribution of T-to-C substitutions in spots of DynaST-seq data and estimate the substitution rate caused by metabolic RNA labeling.
+2. Consensus_sequence_construction.py：
+   used to retain reads with identical UMIs, barcodes, and gene labels in the BAM file, and for each genomic position, select the most frequent base within each UMI group as the consensus base to construct the consensus sequence.
+3. Expression_matrix_extraction.py：
+   extracts gene, barcode, and UMI information from the BAM file, calculates the UMI expression matrices and UMI rates for new and old genes.
+4. Conversion_Proportions.py：
+   calculates mutation and conversion counts, and generates summary reports and visualizations of conversion proportions for sequencing data analysis.
+5. Metabolic_Labeling_Correction.py：
+   binomial mixture model was used to correct the distribution of T-to-C substitutions in spots of DynaST-seq data and estimate the substitution rate caused by metabolic RNA labeling.
 
 ## Data
 Raw data files are available at NCBI Gene Expression Omnibus (GEO)
