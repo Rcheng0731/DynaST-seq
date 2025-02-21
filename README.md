@@ -1,7 +1,9 @@
 # DynaST-seq
 ## Obtaining the Expression Matrix for DynaST-seq Data
-* Use the DynamicST tool (https://github.com/DynamicBiosystems/DynamicST) to process spatial transcriptomics data, converting raw image data and sequencing data into valuable gene expression information with a spatial context. The command for DynamicST count is:
-  DynamicST count \
+1. Use the DynamicST tool (https://github.com/DynamicBiosystems/DynamicST) to process spatial transcriptomics data, converting raw image data and sequencing data into valuable gene expression information with a spatial context.
+* The command for DynamicST count is:
+```
+ DynamicST count \
     --sample sampleName \
     --id sampleName \
     --inputdir rawdata \
@@ -10,4 +12,5 @@
     --image HE.tif \
     --alignment alignment.json \
     --outputdir result
+```
 
