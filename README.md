@@ -1,5 +1,7 @@
 # DynaST-seq
 DynaST-seq: a Spatially and Temporally Resolved Transcriptomic Sequencing Approach for Profiling Gene Expression Dynamics in Tissues
+## Abstract
+Understanding the spatio-temporal gene expression is crucial for elucidating the molecular mechanisms that regulate cellular functions. Despite recent advances in spatial transcriptomics, most approaches lack temporal resolution, limiting insights into dynamic gene expression. Here, we present DynaST-seq, an advanced spatio-temporal transcriptomics technology that integrates metabolic RNA labeling with spatial transcriptomics, enabling high-resolution and transcriptome-wide profiling of RNA dynamics across space and time.
 ## Obtaining the Expression Matrix for DynaST-seq Data
 1. Use the DynamicST tool (https://github.com/DynamicBiosystems/DynamicST) to process spatial transcriptomics data, converting raw image data and sequencing data into valuable gene expression information with a spatial context.
 ```
@@ -17,3 +19,6 @@ DynaST-seq: a Spatially and Temporally Resolved Transcriptomic Sequencing Approa
 3. Expression_matrix_extraction.py：extracts gene, barcode, and UMI information from the BAM file, calculates the UMI expression matrices and UMI rates for new and old genes.
 4. Conversion_Proportions.py：calculates mutation and conversion counts, and generates summary reports and visualizations of conversion proportions for sequencing data analysis.
 5. Metabolic_Labeling_Correction.py：binomial mixture model was used to correct the distribution of T-to-C substitutions in spots of DynaST-seq data and estimate the substitution rate caused by metabolic RNA labeling.
+
+## Data
+Raw data files are available at NCBI Gene Expression Omnibus (GEO)
