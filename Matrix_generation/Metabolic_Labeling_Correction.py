@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import argparse
 from scipy.stats import binom
 from scipy.optimize import minimize, minimize_scalar
+import ngs_tools as ngs
 
 CONVERSION_COLUMNS = ['AC', 'AG', 'AT', 'CA', 'CG', 'CT', 'GA', 'GC', 'GT', 'TA', 'TC', 'TG']
 BASE_COLUMNS = ['A', 'C', 'G', 'T']
@@ -91,7 +92,12 @@ def LL(params, data):
     l = params[2] * t1 + (1 - params[2]) * t2
     l = np.clip(l, 1e-10, 1)
     return -np.sum(np.log(l))
-
+def LL_2(params, data, p, q):
+    t1 = binom.pmf(data[:, 1], data[:, 0], p)
+    t2 = binom.pmf(data[:, 1], data[:, 0], q)
+    l = params * t1 + (1 - params) * t2
+    l = np.sum(np.log(l))
+    return -l
 # Estimate p and q values for each group
 def estimate_pq_values(df_combined_group_data, group_pe_values):
     results = []
