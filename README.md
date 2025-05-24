@@ -8,49 +8,50 @@ Understanding the spatio-temporal gene expression is crucial for elucidating the
 1. Use the DynamicST tool (https://github.com/DynamicBiosystems/DynamicST) to process spatial transcriptomics data, converting raw image data and sequencing data into valuable gene expression information with a spatial context.
 ```
  DynamicST count \
-    --sample sampleName \
-    --id sampleName \
-    --inputdir rawdata \
+    --sample demo \
+    --id demo \
+    --inputdir demo/input_data \
     --gtf xxx.gtf \
     --transcriptome xxx \
-    --image HE.tif \
-    --alignment alignment.json \
-    --outputdir result
+    --image /demo/input_data/demo_registedimage.tif \
+    --alignment demo/input_data/demo_alignment.json \
+    --outputdir demo/output_data
 ```
 2. Consensus_sequence_construction.py：
    Used to group reads with identical UMIs, barcodes, and gene labels in the BAM file, and for each genomic position, select the most frequent base within each UMI group as the consensus base to construct the consensus sequence.
 ```
  python Consensus_sequence_construction.py \
-    --bam_path xxx.bam \
+    --bam_path demo/output_data/DynamicST_result/Aligned.sortedByCoord.UniqueGene.bam \
     --gtf_file xxx.gtf \
-    --temp_out_dir result
+    --ref_fa xxx.fa \
+    --temp_out_dir demo/output_data 
 ```
 3. Expression_matrix_extraction.py：
    Extracts gene, barcode, and UMI information from the BAM file; calculates the UMI expression matrices and new-to-old ratios.
 ```
  python Expression_matrix_extraction.py \
-    --sample_name sampleName \
-    --sample_path result \
-    --bam_file xxx.bam
+    --sample_path demo/output_data/DynamicST_result/demo \
+    --bam_path demo/output_data/Aligned.sortedByCoord.UniqueGene.consensus.sorted.bam.tagST.bam \
+    --result_path demo/output_data
 ```
 4. Conversion_Proportions.py：
    Calculates and visualizations the substitution rates, and generates summary reports.
 ```
  python Conversion_Proportions.py \
-    --sample_name sampleName \
+    --sample_path demo/output_data/DynamicST_result/demo \
     --gtf_file xxx.gtf \
-    --bam_file xxx.bam \
-    --out_dir result
+    --bam_file demo/output_data/Aligned.sortedByCoord.UniqueGene.consensus.sorted.bam.tagST.bam \
+    --out_dir demo/output_data
 ```
 5. Metabolic_Labeling_Correction.py：
    A binomial mixture model was used to correct the expression of new RNAs in spots of DynaST-seq data and estimate the substitution rate caused by metabolic RNA labeling.
 ```
  python Metabolic_Labeling_Correction.py \
-    --mutations_file mutations_file \
-    --reads_file reads_file \
-    --group_info_file group_info_file \
-    --convs_file convs.pkl.gz \
-    --out_dir result
+    --mutations_file demo/output_data/all_conversions_list.csv \
+    --reads_file demo/output_data/all_alignments_list.csv \
+    --group_info_file demo/input_data/demo_group_info.csv \
+    --convs_file demo/input_data/convs.pkl.gz \
+    --out_dir demo/output_data
 ```
 
 ## Data
