@@ -13,7 +13,7 @@ Understanding the spatio-temporal gene expression is crucial for elucidating the
     --inputdir demo/input_data \
     --gtf xxx.gtf \
     --transcriptome xxx \
-    --image /demo/input_data/demo_registedimage.tif \
+    --image demo/input_data/demo_registedimage.tif \
     --alignment demo/input_data/demo_alignment.json \
     --outputdir demo/output_data
 ```
